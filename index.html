@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<html ng-app='myPostApp'>
-    <head>
-        <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
-    </head>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Browser notes</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+  <ul class="menu">
+    <li><a href="#/list">List of notes</a></li>
+    <li><a href="#/add">Add new note</a></li>
+  </ul>
 
-    <body ng-controller='PostController'>
-        <div id="page-wrap">
-        <form action="index.html">
-            <p><input type='text' id='postTitle'>
-            <p><textarea rows='5' id='postText'></textarea>
-            <p><button class='btn-main' ng-click="save()">Save to notes</button>
-        </form>
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
 
-        <div class='post' ng-repeat='post in posts track by $index'>
-            <p><span>{{post.title}}</span>
-            <p><span>{{post.date}}</span>
-            <p><span>{{post.text}}</span>
-            <p><button class='btn-small' ng-click="remove($index)">Remove</button>
-        </div>
-        </div>
-        <script src="js/angular.js"></script>
-        <script src="js/postcontroller.js"></script>
-    </body>
+  <div ng-view></div>
 
+  <div>Browser notes app: v<span app-version></span></div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+</body>
 </html>
