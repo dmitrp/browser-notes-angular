@@ -1,7 +1,9 @@
 /* app css stylesheet */
-body {
+html, body {
     font-family: sans-serif;
     text-align: center;
+    height:100%;
+    overflow:hidden;
 }
 
 a {
@@ -39,8 +41,11 @@ span {
 }
 
 footer {
-   position:absolute;
-   bottom:0;
+  position:static;
+  bottom: 0;
+  height: 5%;
+  background-color:white;
+  text-align: left;
 }
 
 .menu {
@@ -51,6 +56,11 @@ footer {
 
 .menu > li {
   display: inline;
+}
+
+.wrapper {
+    overflow-y:scroll;
+    height: 95%;
 }
 
 .btn-main {
@@ -65,5 +75,5 @@ footer {
 
 .post {
     text-align: left;
-    width: 500px;  
+    margin-left: 200px;
 }

@@ -48,7 +48,7 @@ angular.module('myApp.controllers', [])
 
     $scope.save = function() {
         var data = getStorage();
-    	data.push({title:getpostTitle(), date:getpostText(), text:getCurrentDate()});
+    	data.push({title:getpostTitle(), date:getCurrentDate(), text:getpostText()});
         localStorage.setItem('obj', JSON.stringify(data));
     };
 
