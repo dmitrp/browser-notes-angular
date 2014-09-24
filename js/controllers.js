@@ -4,52 +4,46 @@
 
 angular.module('myApp.controllers', [])
   .controller('ListCtrl', ['$scope', function($scope) {
-    function getStorage() {
-        var initialData = JSON.parse(localStorage.getItem('obj'));
-        if (!initialData) {
-            initialData = [];
+    var List = {
+        posts: [],
+        getStorage: function() {
+            this.posts = JSON.parse(localStorage.getItem('obj'));
+            if (!this.posts) {
+                this.posts = [];
+            }
+        },
+        syncStorage: function() {
+            localStorage.setItem('obj', JSON.stringify(List.posts));
+        },
+        removePost: function(index) {
+            List.posts.splice(List.posts.length - index - 1, 1);
+            List.syncStorage();
         }
-        return initialData;
     };
+    List.getStorage();
 
-    $scope.posts = getStorage()
-
-    function syncStorage() {
-        localStorage.setItem('obj', JSON.stringify($scope.posts));
-    };
-
-    $scope.remove = function(index) {
-        $scope.posts.splice(index, 1);
-        syncStorage();
-    };
+    $scope.List = List;
   }])
 
   .controller('AddCtrl', ['$scope', function($scope) {
-    function getCurrentDate() {
-        var d = new Date();
-        return d.getDate() + "." + (d.getMonth() + 1) + "." + d.getFullYear();
-    };
-
-    function getpostText() {
-        return document.getElementById('postText').value;
-    };
-
-    function getpostTitle() {
-        return document.getElementById('postTitle').value;
-    };
-
-    function getStorage() {
-        var initialData = JSON.parse(localStorage.getItem('obj'));
-        if (!initialData) {
-            initialData = [];
+    var Post = {
+        currentDate: new Date().toString().substring(0, 24),
+        text: '',
+        title: '',
+        getStorage: function() {
+            var initialData = JSON.parse(localStorage.getItem('obj'));
+            if (!initialData) {
+                initialData = [];
+            }
+            return initialData;
+        },
+        saveStorage: function() {
+            var data = Post.getStorage();
+            data.push({title:this.title, date:this.currentDate, text:this.text});
+            console.log(data);
+            localStorage.setItem('obj', JSON.stringify(data));
         }
-        return initialData;
-    };
+    }
 
-    $scope.save = function() {
-        var data = getStorage();
-    	data.push({title:getpostTitle(), date:getCurrentDate(), text:getpostText()});
-        localStorage.setItem('obj', JSON.stringify(data));
-    };
-
+        $scope.Post = Post;
   }]);
