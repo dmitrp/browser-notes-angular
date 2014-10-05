@@ -1,6 +1,7 @@
-<div class='post' ng-repeat='post in List.posts | reverse track by $index'>
+<div class='post' ng-repeat='post in List.posts | reverse | limitTo:List.postLimit track by $index'>
   <p><span>{{post.title}}</span>
   <p><span>{{post.date}}</span>
   <p><span>{{post.text}}</span>
   <p><button class='btn-small' ng-click="List.removePost($index)">Remove</button>
- </div>
+</div>
+<button class='btn-small' ng-if="List.postLimit < List.posts.length" ng-click="List.morePosts()">More posts</button>

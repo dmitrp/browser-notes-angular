@@ -6,6 +6,7 @@ angular.module('myApp.controllers', [])
   .controller('ListCtrl', ['$scope', function($scope) {
     var List = {
         posts: [],
+        postLimit: 3,
         getStorage: function() {
             this.posts = JSON.parse(localStorage.getItem('obj'));
             if (!this.posts) {
@@ -18,6 +19,9 @@ angular.module('myApp.controllers', [])
         removePost: function(index) {
             List.posts.splice(List.posts.length - index - 1, 1);
             List.syncStorage();
+        },
+        morePosts: function() {
+            List.postLimit += 3;
         }
     };
     List.getStorage();
@@ -43,7 +47,7 @@ angular.module('myApp.controllers', [])
             console.log(data);
             localStorage.setItem('obj', JSON.stringify(data));
         }
-    }
+    };
 
         $scope.Post = Post;
   }]);
