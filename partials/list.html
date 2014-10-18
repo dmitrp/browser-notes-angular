@@ -1,7 +1,17 @@
 <div class='post' ng-repeat='post in List.posts | reverse | limitTo:List.postLimit track by $index'>
-  <p><span>{{post.title}}</span>
+  <div>
+  	<span ng-if='!post.isEdited'>{{post.title}}</span>
+  	<input ng-if='post.isEdited' ng-model='post.title'></input>
+  </div>
   <p><span>{{post.date}}</span>
-  <p><span>{{post.text}}</span>
-  <p><button class='btn-small' ng-click="List.removePost($index)">Remove</button>
+  <div>
+  	<span ng-if='!post.isEdited'>{{post.text}}</span>
+  	<textarea ng-if='post.isEdited' ng-model='post.text'></textarea>
+  </div>
+  <div>
+     <button class='btn-small' ng-if='!post.isEdited' ng-click="List.editPost($index)">Edit</button>
+     <button class='btn-small' ng-if='post.isEdited' ng-click="List.savePost($index)">Save</button>
+     <button class='btn-small' ng-click="List.removePost($index)">Remove</button>
+  </div>
 </div>
 <button class='btn-small' ng-if="List.postLimit < List.posts.length" ng-click="List.morePosts()">More posts</button>

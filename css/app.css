@@ -54,6 +54,8 @@ span {
 }
 
 .btn-small, a {
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 14px;
     color: blue;
 }

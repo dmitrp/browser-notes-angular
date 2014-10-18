@@ -6,20 +6,27 @@ angular.module('myApp.controllers', [])
         posts: [],
         postLimit: 3,
         getStorage: function() {
-            this.posts = JSON.parse(localStorage.getItem('obj'));
+            this.posts = JSON.parse(localStorage.getItem('posts'));
             if (!this.posts) {
                 this.posts = [];
             }
         },
         syncStorage: function() {
-            localStorage.setItem('obj', JSON.stringify(List.posts));
+            localStorage.setItem('posts', JSON.stringify(List.posts));
         },
         removePost: function(index) {
-            List.posts.splice(List.posts.length - index - 1, 1);
-            List.syncStorage();
+            this.posts.splice(List.posts.length - index - 1, 1);
+            this.syncStorage();
+        },
+        editPost: function(index) {
+            this.posts[this.posts.length - index - 1].isEdited = true;
+        },
+        savePost: function(index) {
+            this.posts[this.posts.length - index - 1].isEdited = false;
+            localStorage.setItem('posts', JSON.stringify(this.posts));
         },
         morePosts: function() {
-            List.postLimit += 3;
+            this.postLimit += 3;
         }
     };
     List.getStorage();
@@ -33,7 +40,7 @@ angular.module('myApp.controllers', [])
         text: '',
         title: '',
         getStorage: function() {
-            var initialData = JSON.parse(localStorage.getItem('obj'));
+            var initialData = JSON.parse(localStorage.getItem('posts'));
             if (!initialData) {
                 initialData = [];
             }
@@ -42,8 +49,7 @@ angular.module('myApp.controllers', [])
         saveStorage: function() {
             var data = Post.getStorage();
             data.push({title:this.title, date:this.currentDate, text:this.text});
-            console.log(data);
-            localStorage.setItem('obj', JSON.stringify(data));
+            localStorage.setItem('posts', JSON.stringify(data));
         }
     };
 
