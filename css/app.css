@@ -2,8 +2,6 @@
 html, body {
     font-family: sans-serif;
     text-align: center;
-    height:100%;
-    overflow:hidden;
 }
 
 a {
@@ -40,14 +38,6 @@ span {
     white-space: pre-wrap;
 }
 
-footer {
-  position:static;
-  bottom: 0;
-  height: 5%;
-  background-color:white;
-  text-align: left;
-}
-
 .menu {
   list-style: none;
   margin-bottom: 2em;
@@ -56,11 +46,6 @@ footer {
 
 .menu > li {
   display: inline;
-}
-
-.wrapper {
-    overflow-y:scroll;
-    height: 95%;
 }
 
 .btn-main {
