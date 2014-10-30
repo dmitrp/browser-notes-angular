@@ -1,0 +1,14 @@
+{
+    "name": "browser-notes-angular",
+    "version": "1.0",
+    "main": "index.html",
+    "ignore": [
+      "**/.*",
+      "libs"
+    ],
+    "dependencies": {
+     "angular": "latest",
+     "requirejs": "latest"
+   }
+ }
+ 
