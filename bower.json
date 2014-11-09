@@ -8,7 +8,9 @@
     ],
     "dependencies": {
      "angular": "latest",
-     "requirejs": "latest"
+     "angular-route": "latest",
+     "requirejs": "latest",
+     "requirejs-domready": "latest"
    }
  }
  

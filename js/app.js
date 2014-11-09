@@ -1,12 +1,14 @@
-'use strict';
-
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.filters',
-  'myApp.controllers'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/list', {templateUrl: 'partials/list.html', controller: 'ListCtrl'});
-  $routeProvider.when('/add', {templateUrl: 'partials/add.html', controller: 'AddCtrl'});
-  $routeProvider.otherwise({redirectTo: '/list'});
-}]);
+define([
+     'angular',
+     'angular-route',
+     './controllers/index',
+     './filters/index'
+ ], function (ng) {
+     'use strict';
+ 
+     return ng.module('app', [
+         'app.controllers',
+         'app.filters',
+         'ngRoute'
+     ]);
+});
