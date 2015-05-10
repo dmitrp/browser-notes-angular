@@ -32,6 +32,7 @@ textarea {
     border: solid;
     border-width: 1px;
     border-color: gray;
+    resize: none;
 }
 
 span {
