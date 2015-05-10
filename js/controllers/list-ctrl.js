@@ -14,7 +14,7 @@ define(['./module'], function (controllers) {
 	            localStorage.setItem('posts', JSON.stringify(List.posts));
 	        },
 	        removePost: function(index) {
-	            this.posts.splice(List.posts.length - index - 1, 1);
+	            this.posts.splice(this.posts.length - index - 1, 1);
 	            this.syncStorage();
 	        },
 	        editPost: function(index) {
