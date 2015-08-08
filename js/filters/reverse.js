@@ -1,10 +1,8 @@
-define(['app'], function (app) {
+define(['./module'], function (filters) {
 'use strict';
-	return app.filter('reverse', [function() {
+	return filters.filter('reverse', [function() {
     	return function(items) {
       		return items.slice().reverse();
     	}
     }]);
-
-	return app;
 });
