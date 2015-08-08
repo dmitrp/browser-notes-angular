@@ -1,6 +1,6 @@
-define(['./module'], function (controllers) {
+define(['app'], function (app) {
     'use strict';
-    controllers.controller('ListCtrl', ['$scope', function ($scope) {
+    app.controller('ListCtrl', ['$scope', function ($scope) {
 	    var List = {
 	        posts: [],
 	        postLimit: 3,
@@ -32,4 +32,6 @@ define(['./module'], function (controllers) {
 
 	    $scope.List = List;
     }]);
+
+	return app;
 });

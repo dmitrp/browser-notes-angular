@@ -1,14 +1,10 @@
 define([
      'angular',
-     'angular-route',
-     './controllers/index',
-     './filters/index'
+     'angular-route'
  ], function (ng) {
      'use strict';
  
      return ng.module('app', [
-         'app.controllers',
-         'app.filters',
          'ngRoute'
      ]);
 });

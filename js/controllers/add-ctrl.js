@@ -1,6 +1,6 @@
-define(['./module'], function (controllers) {
+define(['app'], function (app) {
     'use strict';
-    controllers.controller('AddCtrl', ['$scope', function ($scope) {
+    app.controller('AddCtrl', ['$scope', function ($scope) {
 		var Post = {
 		        currentDate: new Date().toString().substring(0, 24),
 		        text: '',
@@ -21,4 +21,6 @@ define(['./module'], function (controllers) {
 
 		$scope.Post = Post;
     }]);
+
+	return app;
 });
