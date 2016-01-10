@@ -8,19 +8,22 @@ define(['./module'], function (controllers) {
 	            this.posts = StorageFact.getStorage();
 	        },
 	        removePost: function(index) {
-	            this.posts.splice(this.posts.length - index - 1, 1);
+	            this.posts.splice(this.calculatePosition(index), 1);
 				StorageFact.syncStorage(List.posts);
 	        },
 	        editPost: function(index) {
-	            this.posts[this.posts.length - index - 1].isEdited = true;
+	            this.posts[this.calculatePosition(index)].isEdited = true;
 	        },
 	        savePost: function(index) {
-	            this.posts[this.posts.length - index - 1].isEdited = false;
+	            this.posts[this.calculatePosition(index)].isEdited = false;
 				StorageFact.syncStorage(List.posts);
 	        },
 	        morePosts: function() {
 	            this.postLimit += 3;
-	        }
+	        },
+			calculatePosition: function(index) {
+				return this.posts.length - index - 1;
+			}
 	    };
 
 	    List.getStorage();
