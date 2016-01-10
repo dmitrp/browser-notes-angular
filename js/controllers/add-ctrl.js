@@ -1,21 +1,13 @@
 define(['./module'], function (controllers) {
     'use strict';
-    controllers.controller('AddCtrl', ['$scope', function ($scope) {
+    controllers.controller('AddCtrl', ['$scope', 'StorageFact', function ($scope, StorageFact) {
 		var Post = {
 		        currentDate: new Date().toString().substring(0, 24),
 		        text: '',
 		        title: '',
-		        getStorage: function() {
-		            var initialData = JSON.parse(localStorage.getItem('posts'));
-		            if (!initialData) {
-		                initialData = [];
-		            }
-		            return initialData;
-		        },
-		        saveStorage: function() {
-		            var data = Post.getStorage();
-		            data.push({title:this.title, date:this.currentDate, text:this.text});
-		            localStorage.setItem('posts', JSON.stringify(data));
+		        save: function() {
+					var that = this;
+		            StorageFact.saveStorage({title:that.title, date:that.currentDate, text:that.text});
 		        }
 		    };
 
